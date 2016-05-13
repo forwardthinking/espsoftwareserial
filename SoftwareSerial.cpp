@@ -89,7 +89,7 @@ SoftwareSerial::SoftwareSerial(int receivePin, int transmitPin, bool inverse_log
       digitalWrite(m_txPin, !m_invert);
    }
    // Default speed
-   begin(9600);
+   //begin(9600);
 }
 
 SoftwareSerial::~SoftwareSerial() {
