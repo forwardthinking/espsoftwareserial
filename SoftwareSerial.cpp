@@ -45,7 +45,7 @@ void ICACHE_RAM_ATTR sws_isr_5() { ObjList[5]->rxRead(); };
 void ICACHE_RAM_ATTR sws_isr_12() { ObjList[12]->rxRead(); };
 void ICACHE_RAM_ATTR sws_isr_13() { ObjList[13]->rxRead(); };
 void ICACHE_RAM_ATTR sws_isr_14() { ObjList[14]->rxRead(); };
-void ICACHE_RAM_ATTR sws_isr_15() { ObjList[15]->rxRead(); };
+//void ICACHE_RAM_ATTR sws_isr_15() { ObjList[15]->rxRead(); };
 
 static void (*ISRList[MAX_PIN+1])() = {
       // sws_isr_0,
