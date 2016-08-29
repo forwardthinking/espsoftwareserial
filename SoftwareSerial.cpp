@@ -35,9 +35,9 @@ extern "C" {
 // and callbacks corresponding to each possible GPIO pins have to be defined
 SoftwareSerial *ObjList[MAX_PIN+1];
 
-void ICACHE_RAM_ATTR sws_isr_0() { ObjList[0]->rxRead(); };
+//void ICACHE_RAM_ATTR sws_isr_0() { ObjList[0]->rxRead(); };
 void ICACHE_RAM_ATTR sws_isr_1() { ObjList[1]->rxRead(); };
-void ICACHE_RAM_ATTR sws_isr_2() { ObjList[2]->rxRead(); };
+//void ICACHE_RAM_ATTR sws_isr_2() { ObjList[2]->rxRead(); };
 void ICACHE_RAM_ATTR sws_isr_3() { ObjList[3]->rxRead(); };
 void ICACHE_RAM_ATTR sws_isr_4() { ObjList[4]->rxRead(); };
 void ICACHE_RAM_ATTR sws_isr_5() { ObjList[5]->rxRead(); };
@@ -48,9 +48,11 @@ void ICACHE_RAM_ATTR sws_isr_14() { ObjList[14]->rxRead(); };
 void ICACHE_RAM_ATTR sws_isr_15() { ObjList[15]->rxRead(); };
 
 static void (*ISRList[MAX_PIN+1])() = {
-      sws_isr_0,
+      // sws_isr_0,
+      NULL,
       sws_isr_1,
-      sws_isr_2,
+      // sws_isr_2,
+      NULL,
       sws_isr_3,
       sws_isr_4,
       sws_isr_5,
@@ -63,7 +65,8 @@ static void (*ISRList[MAX_PIN+1])() = {
       sws_isr_12,
       sws_isr_13,
       sws_isr_14,
-      sws_isr_15
+      // sws_isr_15
+      NULL
 };
 
 SoftwareSerial::SoftwareSerial(int receivePin, int transmitPin, bool inverse_logic, unsigned int buffSize) {
@@ -173,6 +176,7 @@ size_t SoftwareSerial::write(uint8_t b) {
 
 void SoftwareSerial::flush() {
    m_inPos = m_outPos = 0;
+   m_buffer[0] = 0;
 }
 
 int SoftwareSerial::peek() {
